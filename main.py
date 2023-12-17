@@ -5,12 +5,12 @@ conexao = mysql.connector.connect(
     host='localhost',
     user='root',
     password='',
-    database='cadastro',
+    database='cadastro', 
 )
 
 cursor = conexao.cursor()
-comand = 'INSERT INTO login_ (nome) VALUES ("{nome}")'
-cursor.execute(comand)
+
+
 
 def main(page):
 
@@ -40,19 +40,19 @@ def main(page):
             txt_password.error_text="Error"
             page.update()
         else:
-            name = txt_name.value
+            name1 = txt_name.value
             password = txt_password.value
+            comand = f'INSERT INTO login_ (name_, pass_login) VALUES ("{name1}", "{password}")'
+            cursor.execute(comand)
             page.clean()
-            page.add(ft.Text(f"Connected, {name}! Your password is {password}"))
+            page.add(ft.Text(f"Connected, {name1}! Your password is {password}"))
 
     txt_name = ft.TextField(label="Your Login")
     txt_password = ft.TextField(label="Your password")
-
-    nome = txt_name.value
-    password = txt_password.value
+    
     page.add(txt_name, txt_password, ft.ElevatedButton("Connected!", on_click=btn_click))
     page.update()
-
+    
 ft.app(target=main)
 cursor.close()
 conexao.close()
