@@ -57,7 +57,7 @@ def main(page):
             page.add(result)
 
 
-    page.add(title_main, enter_1, enter_2, ft.ElevatedButton(on_click=button_fct))
+    page.add(title_main, enter_1, enter_2, ft.ElevatedButton("CONNECT", on_click=button_fct))
     page.update()
 
 
