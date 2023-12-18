@@ -10,7 +10,7 @@ conexao = mysql.connector.connect(
 
 cursor = conexao.cursor()
 
-def verifyLogin(username,password,filepath):
+def verifyLogin(username, password, filepath):
     try:
         password = password+'\n'
 
@@ -18,9 +18,11 @@ def verifyLogin(username,password,filepath):
             lines = file.readlines()
 
             for line in lines:
+
                 fields = line.split(',')
-            if(fields[0] == username and fields[1] == password):
-                return True
+
+                if(fields[0] ==username and fields[1] == password):
+                    return True
     except Exception:
         print(Exception)
     return False
@@ -47,12 +49,12 @@ def main(page):
         elif not enter_2.value:
             enter_2.error_text = "Please enter your password"
             page.update()
-        elif verifyLogin(f"{enter_1.value}",f"{enter_2.value}", "data.txt") == True:
+        elif verifyLogin(f"{enter_1.value}",f"{enter_2.value}","data.txt") == True:
             page.clean()
             result = ft.Text("You're in")
             page.add(result)
         else:
-            page.clean()
+            enter_1.error_text = "Error"
             result = ft.Text("You're out")
             page.add(result)
 
