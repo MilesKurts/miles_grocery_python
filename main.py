@@ -10,8 +10,6 @@ conexao = mysql.connector.connect(
 
 cursor = conexao.cursor()
 
-
-
 def main(page):
 
     page.title = "Login employee"
