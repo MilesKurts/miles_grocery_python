@@ -12,6 +12,7 @@ mydb = mysql.connector.connect(
 cursor = mydb.cursor()
 
 def main(page:Page):
+    page.scroll = "auto"
     nametxt = TextField(label='name')
     password = TextField(label='password')
 
